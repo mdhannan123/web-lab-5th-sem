@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User Information</title>
+</head>
+<body>
+
+    <h2>View User Information</h2>
+
+    <!-- Display area for stored information -->
+    <div id="informationDisplay"></div>
+
+    <script>
+        // Retrieve the stored JSON string
+        var storedInfo = localStorage.getItem("userInfo");
+
+        if (storedInfo) {
+            // Parse the JSON string back to a JavaScript object
+            var userInfo = JSON.parse(storedInfo);
+
+            // Display the information
+            var displayArea = document.getElementById("informationDisplay");
+            displayArea.innerHTML = "<h3>Stored User Information:</h3>" +
+                "<p>Name: " + userInfo.name + "</p>" +
+                "<p>Email: " + userInfo.email + "</p>" +
+                "<p>Age: " + userInfo.age + "</p>" +
+                "<p>Faculty: " + userInfo.faculty + "</p>" +
+                "<p>Semester: " + userInfo.semester + "</p>" +
+                "<p>Gender: " + userInfo.gender + "</p>";
+        } else {
+            alert("No user information found. Please submit the form first.");
+        }
+    </script>
+
+</body>
+</html>

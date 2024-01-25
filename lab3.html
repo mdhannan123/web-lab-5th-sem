@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+</head>
+<body>
+
+    <h2>User Information Form</h2>
+
+    <!-- Form to collect user information -->
+    <form id="userInfoForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="faculty">Faculty:</label>
+        <input type="text" id="faculty" name="faculty" required><br>
+
+        <label for="semester">Semester:</label>
+        <input type="number" id="semester" name="semester" required><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <hr>
+
+    <!-- Redirect to viewInformation.html -->
+    <a href="lab 3(1).html">View Information</a>
+
+    <script>
+        function submitForm() {
+            // Get form values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var age = document.getElementById("age").value;
+            var faculty = document.getElementById("faculty").value;
+            var semester = document.getElementById("semester").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+
+            // Create a JavaScript object with the user information
+            var userInfo = {
+                name: name,
+                email: email,
+                age: age,
+                gender: gender,
+                faculty: faculty,
+                semester: semester
+            };
+
+            // Convert the object to a JSON string
+            var jsonString = JSON.stringify(userInfo);
+
+            // Save the JSON string to a file (in this case, using localStorage)
+            localStorage.setItem("userInfo", jsonString);
+
+            alert("User information submitted successfully!");
+        }
+    </script>
+
+</body>
+</html>
